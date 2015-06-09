@@ -44,7 +44,7 @@
 <body>
 <div id="authHolder">
   <div class="form-group">
-    <form role="form" action="/updateUser">
+    <form role="form" action="/updateUser" method="POST">
       <h1 style="margin-left:20px">გთხოვთ შეიყვანოთ ინფორმაცია</h1><br><br><br>
       <div class="form-group">
         <label for="locationHave">აირჩიეთ რომელი ლოკაცია გაქვთ</label>
@@ -77,7 +77,7 @@
       </div>
       <button type="submit" style="margin-left:200px;" class="btn btn-success btn-lg">შეინახე</button>
     </form>
-    <form action="/updateUser?satisfy">
+    <form action="/updateUser?satisfy" method="POST">
       <button type="submit" style="margin-left:200px;" class="btn btn-danger btn-lg">აღარ მინდა გაცვლა</button>
     </form>
   </div>
