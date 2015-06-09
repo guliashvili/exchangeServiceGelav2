@@ -34,12 +34,12 @@
 			<table id="dataTable" class="display" cellspacing="0" width="100%">
 				<thead>
 					<tr>
-						<th>სახელი გვარი</th>
+						<th>სახელი</th>
+						<th>გვარი</th>
 						<th>ელ. ფოსტა</th>
 						<th>ტელეფონის ნომერი</th>
 						<th>ნაკადი</th>
 						<th>ლოკაცია</th>
-						<th>დამატებითი ინფორმაცია</th>
 					</tr>
 				</thead>
 		 
@@ -57,28 +57,31 @@
 		</div>
 	</body>
 	<script>
+	var locations={};
 	$(document).ready(function() {
+		$.get("localhost:8080/locations").done(function(data){
+			locations=JSON.parse(data);
+		});
 		$.get("localhost:8080/pref").done(function (data){
 			output='<thead>\
 					<tr>\
-						<th>სახელი გვარი</th>\
-						<th>ელ. ფოსტა</th>\
+						<th>სახელი</th>\
+						<th>გვარი</th>\
 						<th>ტელეფონის ნომერი</th>\
 						<th>ნაკადი</th>\
 						<th>ლოკაცია</th>\
-						<th>დამატებითი ინფორმაცია</th>\
 					</tr>\
 				</thead>\
 				<tbody>';
 			var k = JSON.parse(data);
 			for each(var l in k){
 				output+='<tr>';
-				output+='<td>'+l.name;
+				output+='<td>'+l.firstName;
+				output+='<td>'+l.lastName;
 				output+='<td>'+l.email;
-				output+='<td>'+l.phone;
-				output+='<td>'+l.thread;
-				output+='<td>'+l.loc;
-				output+='<td>'+l.addInfo;
+				output+='<td>'+l.phoneNumber;
+				output+='<td>'+locations[l.locationID].startDate;
+				output+='<td>'+locations[l.locationID].locationName;
 				output+='</tr>';
 			}
 			output+='<tbody>';
