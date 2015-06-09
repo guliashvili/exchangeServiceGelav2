@@ -6,23 +6,41 @@ package ge.exchangeservicegela.beans;
 public class User{
 
         private int userID;
+        private String email;
         private String phoneNumber;
         private String password;
         private String firstName;
         private String lastName;
-        private String googleID;
         private boolean isSatisfied;
         private int locationID;
+        private  boolean isConfirmed;
 
-    public User(int userID, String phoneNumber, String password, String firstName, String lastName, String googleID, boolean isSatisfied, int locationID) {
+    public User(int userID, String email, String phoneNumber, String password, String firstName, String lastName, boolean isSatisfied, int locationID, boolean isConfirmed) {
         this.userID = userID;
+        this.email = email;
         this.phoneNumber = phoneNumber;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.googleID = googleID;
         this.isSatisfied = isSatisfied;
         this.locationID = locationID;
+        this.isConfirmed = isConfirmed;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public boolean isConfirmed() {
+        return isConfirmed;
+    }
+
+    public void setIsConfirmed(boolean isConfirmed) {
+        this.isConfirmed = isConfirmed;
     }
 
     public int getUserID() {
@@ -63,14 +81,6 @@ public class User{
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public String getGoogleID() {
-        return googleID;
-    }
-
-    public void setGoogleID(String googleID) {
-        this.googleID = googleID;
     }
 
     public boolean isSatisfied() {

@@ -19,12 +19,12 @@ CREATE TABLE Users (
 	password VARCHAR(30) NOT NULL,
 	firstName VARCHAR(30) NOT NULL,
 	lastName VARCHAR(30) NOT NULL,
-	googleID VARCHAR(255) UNIQUE NOT NULL,
-	
+
 	isSatisfied BOOLEAN NOT NULL,
 	
 	
 	locationID INT NOT NULL,
+	confirmed BOOLEAN NOT NULL,
 	FOREIGN KEY (locationID) REFERENCES Location(locationID)
 
 );
