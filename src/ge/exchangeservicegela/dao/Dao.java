@@ -1,5 +1,7 @@
 package ge.exchangeservicegela.dao;
 
+import com.mysql.fabric.xmlrpc.base.Array;
+import ge.exchangeservicegela.beans.Location;
 import ge.exchangeservicegela.beans.User;
 import ge.exchangeservicegela.db.DBConnectionProvider;
 
@@ -7,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  * Created by Alex on 6/9/2015.
@@ -46,7 +49,16 @@ public class Dao {
     }
 
     public boolean setVerified(int userID){
-
+        boolean errorCode = false;
+        try (Connection con = DBConnectionProvider.getConnection()) {
+            try (PreparedStatement st = con.prepareStatement("UPDATE Users SET confimed=true WHERE userID=?")) {
+                st.setInt(1,userID);
+                st.executeUpdate();
+            }
+        } catch (SQLException e) {
+            errorCode = false;
+        }
+        return errorCode;
     }
 
     public boolean addUser(User user){
@@ -73,7 +85,21 @@ public class Dao {
 
     }
 
-
+    public ArrayList<Location> getLocations(){
+        ArrayList<Location> ret = new ArrayList<>();
+        try (Connection con = DBConnectionProvider.getConnection()) {
+            try (PreparedStatement st = con.prepareStatement("select * FROM location")) {
+                ResultSet res = st.executeQuery();
+                while (res.next()){
+                    Location loc = new Location(res.getInt(1),res.getString(2),res.getString(3),res.getString(4));
+                    ret.add(loc);
+                }
+            }
+        } catch (SQLException e) {
+            ret = null;
+        }
+        return ret;
+    }
 
 
 
