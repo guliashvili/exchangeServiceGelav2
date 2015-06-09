@@ -10,6 +10,13 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+  User user = (User) session.getAttribute("user");
+  if(user!=null){
+    String redirectURL = "preferences.jsp";
+    response.sendRedirect(redirectURL);
+  }
+%>
 <html>
 <script src="http://code.jquery.com/jquery-2.1.4.min.js"> </script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
@@ -44,7 +51,7 @@
 <body>
 <div id="authHolder">
   <div class="form-group">
-    <form role="form" action="/updateUser">
+    <form role="form" action="/updateUser" method="POST">
       <h1 style="margin-left:20px">გთხოვთ შეიყვანოთ ინფორმაცია</h1><br><br><br>
       <div class="form-group">
         <label for="locationHave">აირჩიეთ რომელი ლოკაცია გაქვთ</label>
@@ -77,7 +84,7 @@
       </div>
       <button type="submit" style="margin-left:200px;" class="btn btn-success btn-lg">შეინახე</button>
     </form>
-    <form action="/updateUser?satisfy">
+    <form action="/updateUser?satisfy" method="POST">
       <button type="submit" style="margin-left:200px;" class="btn btn-danger btn-lg">აღარ მინდა გაცვლა</button>
     </form>
   </div>
