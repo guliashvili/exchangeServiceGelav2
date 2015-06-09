@@ -52,6 +52,8 @@ public class Dao {
 
     public  boolean updateUser(User user){
         boolean errorCode = false;
+        if(!getUserByID(user.getUserID()).getPassword().equals(user.getPassword()))
+            return  true;
 
         try (Connection con = DBConnectionProvider.getConnection()) {
             try (PreparedStatement st = con.prepareStatement("UPDATE Users SET " +
