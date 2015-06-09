@@ -1,3 +1,7 @@
+<%@ page import="ge.exchangeservicegela.dao.Dao" %>
+<%@ page import="ge.exchangeservicegela.beans.User" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="ge.exchangeservicegela.beans.Location" %>
 <%--
   Created by IntelliJ IDEA.
   User: Ratmach
@@ -52,14 +56,26 @@
     </thead>
 
     <tbody>
-    <tr>
-      <td data-search="Tiger Nixon">T. Nixon</td>
-      <td>System Architect</td>
-      <td>Edinburgh</td>
-      <td>61</td>
-      <td data-order="1303686000">Mon 25th Apr 11</td>
-      <td data-order="320800">$320,800/y</td>
-    </tr>
+      <%
+        Dao dao = new Dao();
+        ArrayList<User> usr = dao.getMewyvile(((User)session.getAttribute("user")).getUserID());
+        ArrayList<Location> loc = dao.getLocations();
+        for(User u : usr){
+          out.println("<tr>");
+          out.println("<td>"+u.getFirstName()+"</td>");
+          out.println("<td>"+u.getLastName()+"</td>");
+          out.println("<td>"+u.getEmail()+"</td>");
+          out.println("<td>"+u.getPhoneNumber()+"</td>");
+          for(Location l : loc){
+            if(l.getLocationID()==u.getLocationID()) {
+              out.println("<td>" + l.getStartDate() + "</td>");
+              out.println("<td>" + l.getLocationName() + "</td>");
+              break;
+            }
+          }
+          out.println("</tr>");
+        }
+      %>
     </tbody>
   </table>
 </div>
