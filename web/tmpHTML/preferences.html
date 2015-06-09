@@ -1,8 +1,11 @@
 ﻿<html>
+
 	<script src="http://code.jquery.com/jquery-2.1.4.min.js"> </script>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<link rel="stylesheet" href="http://cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.7/css/jquery.dataTables.css">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"> </script>
 	
 	<head>
 		<title>თავისუფალი და აგრარული უნივერსიტეტის საველე პრაქტიკის გაცვლები</title>
@@ -11,7 +14,7 @@
 		body{
 			background:url("bg.jpg") no-repeat;
 		}
-		#authHolder{
+		div#authHolder{
 			width:960px;
 			height:100%;
 			display: table;
@@ -28,12 +31,58 @@
 	</style>
 	<body>
 		<div id="authHolder">
-			<img src="http://blog.leaf.ge/uploads/account/d1de932af66e610e16138450998b6973/files/%E1%83%97%E1%83%90%E1%83%95%E1%83%98%E1%83%A1%E1%83%A3%E1%83%A4%E1%83%90%E1%83%9A%E1%83%98%20%E1%83%A3%E1%83%9C%E1%83%98%E1%83%95%E1%83%94%E1%83%A0%E1%83%98%E1%83%A2%E1%83%94%E1%83%A2%E1%83%98/freeunii.jpg"><br><br><br><br><br><br>
-			<h2> გამარჯობა თანაუნივერსიტეტელებო ^_^ </h2>
-			<div class="btn-group" role="group" aria-label="">
-				<button type="button" class="btn btn-danger btn-lg">რეგისტრაცია</button>
-				<button type="button" class="btn btn-danger btn-lg">ავტორიზაცია</button>
-			</div>
+			<table id="dataTable" class="display" cellspacing="0" width="100%">
+				<thead>
+					<tr>
+						<th>სახელი გვარი</th>
+						<th>ელ. ფოსტა</th>
+						<th>ტელეფონის ნომერი</th>
+						<th>ნაკადი</th>
+						<th>ლოკაცია</th>
+						<th>დამატებითი ინფორმაცია</th>
+					</tr>
+				</thead>
+		 
+				<tbody>
+					<tr>
+						<td data-search="Tiger Nixon">T. Nixon</td>
+						<td>System Architect</td>
+						<td>Edinburgh</td>
+						<td>61</td>
+						<td data-order="1303686000">Mon 25th Apr 11</td>
+						<td data-order="320800">$320,800/y</td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
 	</body>
+	<script>
+	$(document).ready(function() {
+		$.get("localhost:8080/pref").done(function (data){
+			output='<thead>\
+					<tr>\
+						<th>სახელი გვარი</th>\
+						<th>ელ. ფოსტა</th>\
+						<th>ტელეფონის ნომერი</th>\
+						<th>ნაკადი</th>\
+						<th>ლოკაცია</th>\
+						<th>დამატებითი ინფორმაცია</th>\
+					</tr>\
+				</thead>\
+				<tbody>';
+			var k = JSON.parse(data);
+			for each(var l in k){
+				output+='<tr>';
+				output+='<td>'+l.name;
+				output+='<td>'+l.email;
+				output+='<td>'+l.phone;
+				output+='<td>'+l.thread;
+				output+='<td>'+l.loc;
+				output+='<td>'+l.addInfo;
+				output+='</tr>';
+			}
+			output+='<tbody>';
+		});
+	});
+	</script>
 </html>
