@@ -16,6 +16,7 @@ public class azo {
     }
 
     public  boolean addUser(User user){
+
         return  dao.addUser(user);
     }
 

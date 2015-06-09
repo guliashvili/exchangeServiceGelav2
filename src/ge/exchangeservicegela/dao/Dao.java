@@ -61,6 +61,8 @@ public class Dao {
         return errorCode;
     }
 
+
+
     public boolean addUser(User user){
         boolean errorCode = false;
         try (Connection con = DBConnectionProvider.getConnection()) {
