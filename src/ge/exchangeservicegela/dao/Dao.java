@@ -156,7 +156,8 @@ public class Dao {
     public ArrayList<User> getMewyvile(int userID){
 
         ArrayList<User> ret = new ArrayList<>();
-        if(!getUserByID(userID).isConfirmed()) return  ret;
+        if(getUserByID(userID) == null) return  null;
+        else  if(!getUserByID(userID).isConfirmed()) return  ret;
 
         try (Connection con = DBConnectionProvider.getConnection()) {
             try (PreparedStatement st = con.prepareStatement("" +
