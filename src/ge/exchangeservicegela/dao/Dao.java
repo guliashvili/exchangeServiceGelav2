@@ -108,6 +108,8 @@ public class Dao {
                 st.setInt(7,user.getLocationID());
                 st.setBoolean(8,user.isConfirmed());
                 st.executeUpdate();
+
+                user.setUserID(loginUser(user.getEmail(),user.getPassword()).getUserID());
             }
         } catch (SQLException e) {
             errorCode = true;
@@ -179,10 +181,8 @@ public class Dao {
             try (PreparedStatement st = con.prepareStatement("insert into Pairs(userID,locationID) VALUES (?,?)")) {
                 st.setInt(1, userID);
                 st.setInt(2,placeID);
-                ResultSet res = st.executeQuery();
-                if (!res.next()) {
-                    errorCode = false;
-                }
+                st.executeUpdate();
+
             }
         } catch (SQLException e) {
             errorCode = true;
@@ -193,12 +193,10 @@ public class Dao {
     public  boolean clearSadUnda(int userID){
         boolean errorCode = false;
         try (Connection con = DBConnectionProvider.getConnection()) {
-            try (PreparedStatement st = con.prepareStatement("DELETE FROM Pairs WHERE Pairs.userID = ?")) {
+            try (PreparedStatement st = con.prepareStatement("DELETE FROM Pairs WHERE Pairs.userID=?")) {
                 st.setInt(1, userID);
-                ResultSet res = st.executeQuery();
-                if (!res.next()) {
-                    errorCode = false;
-                }
+                st.executeUpdate();
+
             }
         } catch (SQLException e) {
             errorCode = true;
