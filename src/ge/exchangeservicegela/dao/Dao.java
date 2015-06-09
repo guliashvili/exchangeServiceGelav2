@@ -124,7 +124,7 @@ public class Dao {
         return ret;
     }
 
-    public User getMewyvile(int userID){
+    public ArrayList<User> getMewyvile(int userID){
         User ret;
         try (Connection con = DBConnectionProvider.getConnection()) {
             try (PreparedStatement st = con.prepareStatement("" +
