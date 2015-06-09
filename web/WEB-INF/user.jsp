@@ -66,8 +66,8 @@
         </select>
       </div>
       <div class="form-group">
-        <label for="locationWANT">აირჩიე რომელი ლოკაცია გინდა:</label>
-        <select multiple class="form-control" id="locationWANT">
+        <label for="locationWant">აირჩიე რომელი ლოკაცია გინდა:</label>
+        <select multiple class="form-control" id="locationWant">
           <%
             for(Location loc:locations){
               out.println("<option value="+loc.getLocationID()+">"+loc.getStartDate()+" " + loc.getLocationName()+"</option>");
@@ -77,7 +77,7 @@
       </div>
       <button type="submit" style="margin-left:200px;" class="btn btn-success btn-lg">შეინახე</button>
     </form>
-    <form>
+    <form action="/updateUser?satisfy">
       <button type="submit" style="margin-left:200px;" class="btn btn-danger btn-lg">აღარ მინდა გაცვლა</button>
     </form>
   </div>
