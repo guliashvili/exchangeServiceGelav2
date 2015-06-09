@@ -1,0 +1,46 @@
+﻿<html>
+	<script src="http://code.jquery.com/jquery-2.1.4.min.js"> </script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+	
+	<head>
+		<title>თავისუფალი და აგრარული უნივერსიტეტის საველე პრაქტიკის გაცვლები</title>
+	</head>
+	<style>
+		body{
+			background:url("bg.jpg") no-repeat;
+		}
+		#authHolder{
+			width:350px;
+			height:200px;
+			display: table;
+			padding:20px;
+			left:50%;
+			margin:40px 0 0 -175px;
+			position:absolute;
+			border:1px solid black;
+			background-color:white;
+		}
+		#authHolder .btn{
+			margin-right:2px;
+		}
+	</style>
+	<body>
+		<div id="authHolder">
+			<form class="form-signin">
+				<h2 class="form-signin-heading">გთხოვთ გაიაროთ ავტორიზაცია</h2>
+				<label for="inputEmail" class="sr-only">თქვენი ელ.ფოსტა</label>
+				<input type="email" id="inputEmail" class="form-control" placeholder="თქვენი ელ.ფოსტა" required autofocus>
+				<label for="inputPassword" class="sr-only">თქვენი პაროლი</label>
+				<input type="password" id="inputPassword" class="form-control" placeholder="პაროლი" required>
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" value="remember-me"> დამიმახსოვრე						</label>
+				</div>
+				<button class="btn btn-lg btn-success btn-block" type="submit">ავტორიზაცია</button>
+			</form>
+		</div>
+	</body>
+</html>
