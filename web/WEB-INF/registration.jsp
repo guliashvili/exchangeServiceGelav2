@@ -1,3 +1,7 @@
+<%@ page import="ge.exchangeservicegela.dao.Dao" %>
+<%@ page import="ge.exchangeservicegela.beans.Location" %>
+<%@ page import="ge.exchangeservicegela.beans.User" %>
+<%@ page import="java.util.ArrayList" %>
 <%--
   Created by IntelliJ IDEA.
   User: Ratmach
@@ -58,6 +62,23 @@
       <label for="phoneNumber">თქვენი ტელეფონის ნომერი:</label>
       <input type="text" class="form-control" id="phoneNumber" placeholder="თქვენი ტელეფონის ნომერი" required> </input><br><br><br>
       <button type="submit" class="btn btn-success btn-lg">რეგისტრაცია</button>
+      <label for="locationHave">აირჩიეთ რომელი ლოკაცია გაქვთ</label>
+        <%
+          Dao dao = new Dao();
+          ArrayList<Location> locations = dao.getLocations();
+        %>
+      <select class="form-control" id="locationHave">
+        <%
+          User usr = (User) session.getAttribute("user");
+          for(Location loc:locations){
+            if(usr.getLocationID()!=loc.getLocationID()){
+              out.println("<option value="+loc.getLocationID()+">"+loc.getStartDate()+" " + loc.getLocationName()+"</option>");
+            }else{
+              out.println("<option selected value="+loc.getLocationID()+">"+loc.getStartDate()+" " + loc.getLocationName()+"</option>");
+            }
+          }
+        %>
+      </select>
   </div>
   </form>
 </div>
