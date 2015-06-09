@@ -16,12 +16,12 @@ import java.io.IOException;
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String username = request.getParameter("username");
+        String email = request.getParameter("email");
         String password = request.getParameter("password");
 
         AllManager manager = (AllManager) getServletContext().getAttribute(AllManager.class.getName());
 
-        User user = manager.loginUser(username, password);
+        User user = manager.loginUser(email, password);
         if (user != null) {
             request.getSession().setAttribute("user", user);
 
