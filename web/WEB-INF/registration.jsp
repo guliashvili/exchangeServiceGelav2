@@ -53,8 +53,8 @@
       <input type="passWord" class="form-control" id="password" placeholder="თქვენი პაროლი" required></input>
       <label for="firstName">თქვენი სახელი:</label>
       <input type="text" class="form-control" id="firstName" placeholder="თქვენი სახელი" required></input>
-      <label for="secondName">თქვენი გვარი:</label>
-      <input type="text" class="form-control" id="secondName" placeholder="თქვენი გვარი" required></input>
+      <label for="lastName">თქვენი გვარი:</label>
+      <input type="text" class="form-control" id="lastName" placeholder="თქვენი გვარი" required></input>
       <label for="phoneNumber">თქვენი ტელეფონის ნომერი:</label>
       <input type="text" class="form-control" id="phoneNumber" placeholder="თქვენი ტელეფონის ნომერი" required> </input><br><br><br>
       <button type="submit" class="btn btn-success btn-lg">რეგისტრაცია</button>
