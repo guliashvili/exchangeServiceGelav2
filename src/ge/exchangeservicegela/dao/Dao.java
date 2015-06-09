@@ -46,7 +46,16 @@ public class Dao {
     }
 
     public boolean setVerified(int userID){
-
+        boolean errorCode = false;
+        try (Connection con = DBConnectionProvider.getConnection()) {
+            try (PreparedStatement st = con.prepareStatement("UPDATE Users SET confimed=true WHERE userID=?")) {
+                st.setInt(1,userID);
+                st.executeUpdate();
+            }
+        } catch (SQLException e) {
+            errorCode = false;
+        }
+        return errorCode;
     }
 
     public boolean addUser(User user){

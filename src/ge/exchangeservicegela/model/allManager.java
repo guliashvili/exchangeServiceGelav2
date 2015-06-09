@@ -17,13 +17,13 @@ public class allManager {
     }
 
     public boolean removeUser(String email,String password){
-        dao.removeUser(email,password);
+        return  dao.removeUser(email,password);
     }
     public  boolean setVerified(int userID){
-
+        return  dao.setVerified(userID);
     }
     public  User loginUser(String email,String password){
-
+        return  dao.loginUser(email,password);
     }
 
 
