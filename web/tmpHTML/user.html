@@ -1,0 +1,98 @@
+﻿<html>
+	<script src="http://code.jquery.com/jquery-2.1.4.min.js"> </script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	
+	<head>
+		<title>თავისუფალი და აგრარული უნივერსიტეტის საველე პრაქტიკის გაცვლები</title>
+	</head>
+	<style>
+		body{
+			background:url("bg.jpg") no-repeat;
+		}
+		#authHolder{
+			width:960px;
+			height:100%;
+			display: table;
+			left:50%;
+			margin:0 0 0 -480px;
+			position:absolute;
+			border:1px solid black;
+			background-color:white;
+			padding-left:30px;
+		}
+		.form-control{
+			width:300px;
+			top:30%;
+			position:relative;
+			margin-left:40px;
+		}
+	</style>
+	<body>
+		<div id="authHolder">
+			<div class="form-group">
+			<form role="form">
+				<h1 style="margin-left:20px">გთხოვთ შეიყვანოთ ინფორმაცია</h1><br><br><br>
+					
+				<label for="location_inp">აირჩიეთ რომელი ლოკაცია გაქვთ</label>
+				<div class="dropdown" style="margin-left:30px">
+				  <button class="btn btn-default dropdown-toggle" type="button" id="thread_inp" data-toggle="dropdown" aria-expanded="true">
+					მე მაქვს
+					<span class="caret"></span>
+				  </button>
+				  <ul class="dropdown-menu" role="menu" aria-labelledby="thread_inp">
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">პირველი ნაკადი</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">მეორე ნაკადი</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">მესამე ნაკადი</a></li>
+				  </ul>
+				</div>
+				<label for="location_inp">აირჩიეთ რომელი ლოკაცია გაქვთ</label>
+				<div class="dropdown" style="margin-left:30px">
+				  <button class="btn btn-default dropdown-toggle" type="button" id="location_inp" data-toggle="dropdown" aria-expanded="true">
+					მე მაქვს
+					<span class="caret"></span>
+				  </button>
+				  <ul class="dropdown-menu" role="menu" aria-labelledby="location_inp">
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">ლოკაცია #1</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">ლოკაცია #2</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">ლოკაცია #3</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">ლოკაცია #4</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">ლოკაცია #5</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">ლოკაცია #6</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">ლოკაცია #7</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">ლოკაცია #8</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">ლოკაცია #9</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">ლოკაცია #10</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">ლოკაცია #11</a></li>
+				  </ul>
+				</div>
+				<div class="form-group">
+				  <label for="sel1">აირჩიე რომელი ნაკადი გინდა:</label>
+				  <select class="form-control" id="sel1">
+					<option>1</option>
+					<option>2</option>
+					<option>3</option>
+				  </select>
+				</div>
+				<div class="form-group">
+				  <label for="sel1">აირჩიე რომელი ლოკაცია გინდა:</label>
+				  <select class="form-control" id="sel1">
+					<option>ლოკაცია #1</option>
+					<option>ლოკაცია #2</option>
+					<option>ლოკაცია #3</option>
+					<option>ლოკაცია #4</option>
+					<option>ლოკაცია #5</option>
+					<option>ლოკაცია #6</option>
+					<option>ლოკაცია #7</option>
+					<option>ლოკაცია #8</option>
+					<option>ლოკაცია #9</option>
+					<option>ლოკაცია #10</option>
+					<option>ლოკაცია #11</option>
+				  </select>
+				</div>
+				<button type="submit" style="margin-left:200px;" class="btn btn-success btn-lg">შეინახე</button>
+			</form>
+		</div>
+	</body>
+</html>
