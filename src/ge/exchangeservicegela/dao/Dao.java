@@ -98,7 +98,7 @@ public class Dao {
         try (Connection con = DBConnectionProvider.getConnection()) {
             try (PreparedStatement st = con.prepareStatement("INSERT INTO " +
                     "Users(email,phoneNumber,password,firstName,lastName,isSatisfied,locationID,confirmed) " +
-                    "VALUES(?,?,?,?,?,?,?,?,?)")) {
+                    "VALUES(?,?,?,?,?,?,?,?)")) {
                 st.setString(1,user.getEmail());
                 st.setString(2,user.getPhoneNumber());
                 st.setString(3,user.getPassword());
@@ -155,14 +155,14 @@ public class Dao {
     public ArrayList<User> getMewyvile(int userID){
 
         ArrayList<User> ret = new ArrayList<>();
-        if(getUserByID(userID).isConfirmed() == false) return  ret;
+        if(!getUserByID(userID).isConfirmed()) return  ret;
 
         try (Connection con = DBConnectionProvider.getConnection()) {
             try (PreparedStatement st = con.prepareStatement("" +
                     " SELECT u.userID FROM " +
                     " Pairs, " +
                     " Users AS u " +
-                    " WHERE u.isSatisfied=FALSE AND u.isConfirmed=TRUE AND Pairs.userID=? AND Pairs.locationID=u.locationID " +
+                    " WHERE u.isSatisfied=FALSE AND u.confirmed=TRUE AND Pairs.userID=? AND Pairs.locationID=u.locationID " +
                     " ORDER BY u.userID ")) {
                 st.setInt(1, userID);
                 ResultSet res = st.executeQuery();
