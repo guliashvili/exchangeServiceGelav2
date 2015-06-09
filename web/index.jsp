@@ -47,7 +47,7 @@
   <h2> გამარჯობა თანაუნივერსიტეტელო ^_^ </h2>
   <div class="btn-group" role="group" aria-label="">
     <a href="registration.jsp"><button type="button" class="btn btn-danger btn-lg">რეგისტრაცია</button></a>
-    <a href="Authorisation.html"><button type="button" class="btn btn-danger btn-lg">ავტორიზაცია</button></a>
+    <a href="authorisation.html"><button type="button" class="btn btn-danger btn-lg">ავტორიზაცია</button></a>
   </div>
 </div>
 </body>
