@@ -34,5 +34,7 @@ public class AllManager {
     public ArrayList<Location> getLocations(){
         return  dao.getLocations();
     }
-
+    public User getMewyvile(int userID){
+        return  dao.getMewyvile(userID);
+    }
 }

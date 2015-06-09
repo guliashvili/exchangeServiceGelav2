@@ -103,8 +103,47 @@ public class Dao {
         return ret;
     }
 
+    private User getUserByID(int userID){
+        User ret;
+        try (Connection con = DBConnectionProvider.getConnection()) {
+            try (PreparedStatement st = con.prepareStatement("select * FROM Users WHERE  Users.userID=?")) {
+                st.setInt(1, userID);
+                ResultSet res = st.executeQuery();
+                if (!res.next()) {
+                    return null;
+                }
+                ret = new User(res.getInt(1), res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(7),res.getBoolean(8),res.getInt(9),res.getBoolean(10));
+            }
+        } catch (SQLException e) {
+            ret = null;
+        }
+        ret.setPassword("");
+        return ret;
+    }
 
+    public User getMewyvile(int userID){
+        User ret;
+        try (Connection con = DBConnectionProvider.getConnection()) {
+            try (PreparedStatement st = con.prepareStatement("SELECT u.firstName,u.lastName,u.email,u.phoneNumber FROM " +
+                    "Pairs, " +
+                    "        Users AS u " +
+                    " WHERE u.isSatisfied=FALSE AND Pairs.userID=? AND Pairs.locationID=u.locationID " +
+                    " ORDER BY u.userID " +
+                    " LIMIT 1")) {
+                st.setInt(1, userID);
+                ResultSet res = st.executeQuery();
+                if (!res.next()) {
+                    return null;
+                }
+                int id = res.getInt(1);
+                ret = getUserByID(id);
+            }
+        } catch (SQLException e) {
+            ret = null;
+        }
+        return  ret;
 
+    }
 
 
 
