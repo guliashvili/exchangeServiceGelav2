@@ -7,10 +7,61 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>
-    <title></title>
-</head>
-<body>
 
+<script src="http://code.jquery.com/jquery-2.1.4.min.js"> </script>
+<link rel="stylesheet" href="http://cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.7/css/jquery.dataTables.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"> </script>
+
+<head>
+  <title>თავისუფალი და აგრარული უნივერსიტეტის საველე პრაქტიკის გაცვლები</title>
+</head>
+<style>
+  body{
+    background:url("bg.jpg") no-repeat;
+  }
+  div#authHolder{
+    width:960px;
+    height:100%;
+    display: table;
+    left:50%;
+    margin:0 0 0 -480px;
+    position:absolute;
+    border:1px solid black;
+    text-align: center;
+    background-color:white;
+  }
+  #authHolder .btn{
+    margin-right:2px;
+  }
+</style>
+<body>
+<div id="authHolder">
+  <table id="dataTable" class="display" cellspacing="0" width="100%">
+    <thead>
+    <tr>
+      <th>სახელი</th>
+      <th>გვარი</th>
+      <th>ელ. ფოსტა</th>
+      <th>ტელეფონის ნომერი</th>
+      <th>ნაკადი</th>
+      <th>ლოკაცია</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr>
+      <td data-search="Tiger Nixon">T. Nixon</td>
+      <td>System Architect</td>
+      <td>Edinburgh</td>
+      <td>61</td>
+      <td data-order="1303686000">Mon 25th Apr 11</td>
+      <td data-order="320800">$320,800/y</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
 </body>
 </html>
