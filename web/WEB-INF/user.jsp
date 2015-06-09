@@ -1,6 +1,7 @@
 <%@ page import="ge.exchangeservicegela.dao.Dao" %>
 <%@ page import="ge.exchangeservicegela.beans.Location" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="ge.exchangeservicegela.beans.User" %>
 <%--
   Created by IntelliJ IDEA.
   User: Ratmach
@@ -53,15 +54,20 @@
         %>
         <select class="form-control" id="locationHave">
           <%
+            User usr = (User) session.getAttribute("user");
             for(Location loc:locations){
-              out.println("<option value="+loc.getLocationID()+">"+loc.getStartDate()+" " + loc.getLocationName()+"</option>");
+              if(usr.getLocationID()!=loc.getLocationID()){
+                out.println("<option value="+loc.getLocationID()+">"+loc.getStartDate()+" " + loc.getLocationName()+"</option>");
+              }else{
+                out.println("<option selected value="+loc.getLocationID()+">"+loc.getStartDate()+" " + loc.getLocationName()+"</option>");
+              }
             }
           %>
         </select>
       </div>
       <div class="form-group">
         <label for="locationWANT">აირჩიე რომელი ლოკაცია გინდა:</label>
-        <select class="form-control" id="locationWANT">
+        <select multiple class="form-control" id="locationWANT">
           <%
             for(Location loc:locations){
               out.println("<option value="+loc.getLocationID()+">"+loc.getStartDate()+" " + loc.getLocationName()+"</option>");
