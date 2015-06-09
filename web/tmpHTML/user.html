@@ -32,67 +32,45 @@
 	<body>
 		<div id="authHolder">
 			<div class="form-group">
-			<form role="form">
-				<h1 style="margin-left:20px">გთხოვთ შეიყვანოთ ინფორმაცია</h1><br><br><br>
-					
-				<label for="location_inp">აირჩიეთ რომელი ლოკაცია გაქვთ</label>
-				<div class="dropdown" style="margin-left:30px">
-				  <button class="btn btn-default dropdown-toggle" type="button" id="thread_inp" data-toggle="dropdown" aria-expanded="true">
-					მე მაქვს
-					<span class="caret"></span>
-				  </button>
-				  <ul class="dropdown-menu" role="menu" aria-labelledby="thread_inp">
-					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">პირველი ნაკადი</a></li>
-					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">მეორე ნაკადი</a></li>
-					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">მესამე ნაკადი</a></li>
-				  </ul>
-				</div>
-				<label for="location_inp">აირჩიეთ რომელი ლოკაცია გაქვთ</label>
-				<div class="dropdown" style="margin-left:30px">
-				  <button class="btn btn-default dropdown-toggle" type="button" id="location_inp" data-toggle="dropdown" aria-expanded="true">
-					მე მაქვს
-					<span class="caret"></span>
-				  </button>
-				  <ul class="dropdown-menu" role="menu" aria-labelledby="location_inp">
-					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">ლოკაცია #1</a></li>
-					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">ლოკაცია #2</a></li>
-					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">ლოკაცია #3</a></li>
-					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">ლოკაცია #4</a></li>
-					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">ლოკაცია #5</a></li>
-					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">ლოკაცია #6</a></li>
-					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">ლოკაცია #7</a></li>
-					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">ლოკაცია #8</a></li>
-					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">ლოკაცია #9</a></li>
-					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">ლოკაცია #10</a></li>
-					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">ლოკაცია #11</a></li>
-				  </ul>
-				</div>
-				<div class="form-group">
-				  <label for="sel1">აირჩიე რომელი ნაკადი გინდა:</label>
-				  <select class="form-control" id="sel1">
-					<option>1</option>
-					<option>2</option>
-					<option>3</option>
-				  </select>
-				</div>
-				<div class="form-group">
-				  <label for="sel1">აირჩიე რომელი ლოკაცია გინდა:</label>
-				  <select class="form-control" id="sel1">
-					<option>ლოკაცია #1</option>
-					<option>ლოკაცია #2</option>
-					<option>ლოკაცია #3</option>
-					<option>ლოკაცია #4</option>
-					<option>ლოკაცია #5</option>
-					<option>ლოკაცია #6</option>
-					<option>ლოკაცია #7</option>
-					<option>ლოკაცია #8</option>
-					<option>ლოკაცია #9</option>
-					<option>ლოკაცია #10</option>
-					<option>ლოკაცია #11</option>
-				  </select>
-				</div>
-				<button type="submit" style="margin-left:200px;" class="btn btn-success btn-lg">შეინახე</button>
-			</form>
+				<form role="form">
+					<h1 style="margin-left:20px">გთხოვთ შეიყვანოთ ინფორმაცია</h1><br><br><br>
+					<div class="form-group">
+					<label for="locationHave">აირჩიეთ რომელი ლოკაცია გაქვთ</label>
+						<select class="form-control" id="locationHave">
+							<option>ლოკაცია #1</option>
+							<option>ლოკაცია #2</option>
+							<option>ლოკაცია #3</option>
+							<option>ლოკაცია #4</option>
+							<option>ლოკაცია #5</option>
+							<option>ლოკაცია #6</option>
+							<option>ლოკაცია #7</option>
+							<option>ლოკაცია #8</option>
+							<option>ლოკაცია #9</option>
+							<option>ლოკაცია #10</option>
+							<option>ლოკაცია #11</option>
+						</select>
+					</div>
+					<div class="form-group">
+					  <label for="locationWANT">აირჩიე რომელი ლოკაცია გინდა:</label>
+					  <select class="form-control" id="locationWANT">
+						<option>ლოკაცია #1</option>
+						<option>ლოკაცია #2</option>
+						<option>ლოკაცია #3</option>
+						<option>ლოკაცია #4</option>
+						<option>ლოკაცია #5</option>
+						<option>ლოკაცია #6</option>
+						<option>ლოკაცია #7</option>
+						<option>ლოკაცია #8</option>
+						<option>ლოკაცია #9</option>
+						<option>ლოკაცია #10</option>
+						<option>ლოკაცია #11</option>
+					  </select>
+					</div>
+					<button type="submit" style="margin-left:200px;" class="btn btn-success btn-lg">შეინახე</button>
+				</form>
+				<form>
+					<button type="submit" style="margin-left:200px;" class="btn btn-danger btn-lg">აღარ მინდა გაცვლა</button>
+				</form>
 		</div>
 	</body>
 </html>
