@@ -7,8 +7,8 @@ USE exchangeServiceGela;
 
 CREATE TABLE Location(
 	locationID INT AUTO_INCREMENT PRIMARY KEY,
-	startDate DATE NOT NULL,
-	endDate DATE NOT NULL,
+	startDate VARCHAR(30) NOT NULL,
+	endDate VARCHAR(30) NOT NULL,
 	locationName VARCHAR(30) NOT NULL
 );
 
@@ -19,12 +19,12 @@ CREATE TABLE Users (
 	password VARCHAR(30) NOT NULL,
 	firstName VARCHAR(30) NOT NULL,
 	lastName VARCHAR(30) NOT NULL,
-	googleID VARCHAR(255) UNIQUE NOT NULL,
-	
+
 	isSatisfied BOOLEAN NOT NULL,
 	
 	
 	locationID INT NOT NULL,
+	confirmed BOOLEAN NOT NULL,
 	FOREIGN KEY (locationID) REFERENCES Location(locationID)
 
 );

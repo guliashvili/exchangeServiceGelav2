@@ -1,4 +1,4 @@
-package ge.taxistgela.db;
+package ge.exchangeservicegela.db;
 
 /**
  * Created by Alex on 5/25/2015.
