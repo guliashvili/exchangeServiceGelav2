@@ -2,6 +2,9 @@ package ge.exchangeservicegela.listener; /**
  * Created by Alex on 6/10/2015.
  */
 
+import ge.exchangeservicegela.dao.Dao;
+import ge.exchangeservicegela.model.AllManager;
+
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
@@ -26,6 +29,7 @@ public class ContextListener implements ServletContextListener,
          initialized(when the Web application is deployed). 
          You can initialize servlet context related data here.
       */
+        sce.getServletContext().setAttribute(AllManager.class.getName(), new AllManager(new Dao()));
     }
 
     public void contextDestroyed(ServletContextEvent sce) {
@@ -33,6 +37,7 @@ public class ContextListener implements ServletContextListener,
          (the Web application) is undeployed or 
          Application Server shuts down.
       */
+        sce.getServletContext().removeAttribute(AllManager.class.getName());
     }
 
     // -------------------------------------------------------
