@@ -7,8 +7,8 @@ USE exchangeServiceGela;
 
 CREATE TABLE Location(
 	locationID INT AUTO_INCREMENT PRIMARY KEY,
-	startDate DATE NOT NULL,
-	endDate DATE NOT NULL,
+	startDate VARCHAR(30) NOT NULL,
+	endDate VARCHAR(30) NOT NULL,
 	locationName VARCHAR(30) NOT NULL
 );
 
