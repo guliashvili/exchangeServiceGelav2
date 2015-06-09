@@ -190,6 +190,22 @@ public class Dao {
         return  errorCode;
     }
 
+    public  boolean clearSadUnda(int userID){
+        boolean errorCode = false;
+        try (Connection con = DBConnectionProvider.getConnection()) {
+            try (PreparedStatement st = con.prepareStatement("DELETE FROM Pairs WHERE Pairs.userID = ?")) {
+                st.setInt(1, userID);
+                ResultSet res = st.executeQuery();
+                if (!res.next()) {
+                    errorCode = false;
+                }
+            }
+        } catch (SQLException e) {
+            errorCode = true;
+        }
+        return  errorCode;
+    }
+
 
 
 

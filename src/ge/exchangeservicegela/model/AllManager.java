@@ -45,4 +45,7 @@ public class AllManager {
     public  boolean addSadUnda(int userId,int placeID){
         return  dao.addSadUnda(userId,placeID);
     }
+    public  boolean clearSadUnda(int userId){
+        return  dao.clearSadUnda(userId);
+    }
 }
