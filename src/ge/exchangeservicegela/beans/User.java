@@ -15,6 +15,10 @@ public class User{
         private int locationID;
         private  boolean isConfirmed;
 
+    public User() {
+
+    }
+
     public User(int userID, String email, String phoneNumber, String password, String firstName, String lastName, boolean isSatisfied, int locationID, boolean isConfirmed) {
         this.userID = userID;
         this.email = email;

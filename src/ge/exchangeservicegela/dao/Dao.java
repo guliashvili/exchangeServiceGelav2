@@ -34,9 +34,11 @@ public class Dao {
         return ret;
     }
 
+    /*
     public boolean removeUser(String email,String password){
         boolean errorCode = false;
         try (Connection con = DBConnectionProvider.getConnection()) {
+            try(PreparedStatement st = con.)
             try (PreparedStatement st = con.prepareStatement("DELETE FROM Users WHERE  Users.email=? AND Users.password=?")) {
                 st.setString(1, email);
                 st.setString(2, password);
@@ -46,7 +48,32 @@ public class Dao {
             errorCode = true;
         }
         return errorCode;
+    }*/
+
+    public  boolean updateUser(User user){
+        boolean errorCode = false;
+
+        try (Connection con = DBConnectionProvider.getConnection()) {
+            try (PreparedStatement st = con.prepareStatement("UPDATE Users SET " +
+                    " email=?, phoneNumber=?,firstName=?,lastName=?,isSatisfied=?,locationID=?,confirmed=? " +
+                    " WHERE email=? AND password=? ")) {
+
+                st.setString(1,user.getPhoneNumber());
+                st.setString(2,user.getFirstName());
+                st.setString(3,user.getLastName());
+                st.setBoolean(4,user.isSatisfied());
+                st.setInt(5,user.getLocationID());
+                st.setBoolean(6,user.isConfirmed());
+                st.setString(7,user.getEmail());
+                st.setString(8,user.getPassword());
+                st.executeUpdate();
+            }
+        } catch (SQLException e) {
+            errorCode = true;
+        }
+        return errorCode;
     }
+    /*
 
     public boolean setVerified(int userID){
         boolean errorCode = false;
@@ -60,7 +87,7 @@ public class Dao {
         }
         return errorCode;
     }
-
+*/
 
 
     public boolean addUser(User user){
@@ -70,17 +97,16 @@ public class Dao {
 
         try (Connection con = DBConnectionProvider.getConnection()) {
             try (PreparedStatement st = con.prepareStatement("INSERT INTO " +
-                    "Users(userID,email,phoneNumber,password,firstName,lastName,isSatisfied,locationID,confirmed) " +
+                    "Users(email,phoneNumber,password,firstName,lastName,isSatisfied,locationID,confirmed) " +
                     "VALUES(?,?,?,?,?,?,?,?,?)")) {
-                st.setInt(1,user.getUserID());
-                st.setString(2,user.getEmail());
-                st.setString(3,user.getPhoneNumber());
-                st.setString(4,user.getPassword());
-                st.setString(5,user.getFirstName());
-                st.setString(6,user.getLastName());
-                st.setBoolean(7,user.isSatisfied());
-                st.setInt(8,user.getLocationID());
-                st.setBoolean(9,user.isConfirmed());
+                st.setString(1,user.getEmail());
+                st.setString(2,user.getPhoneNumber());
+                st.setString(3,user.getPassword());
+                st.setString(4,user.getFirstName());
+                st.setString(5,user.getLastName());
+                st.setBoolean(6,user.isSatisfied());
+                st.setInt(7,user.getLocationID());
+                st.setBoolean(8,user.isConfirmed());
                 st.executeUpdate();
             }
         } catch (SQLException e) {

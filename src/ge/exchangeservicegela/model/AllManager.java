@@ -22,12 +22,16 @@ public class AllManager {
         return  dao.addUser(user);
     }
 
-    public boolean removeUser(String email,String password){
+    public  boolean updateUser(User user){
+        return  dao.updateUser(user);
+    }
+
+    /*public boolean removeUser(String email,String password){
         return  dao.removeUser(email,password);
     }
     public  boolean setVerified(int userID){
         return  dao.setVerified(userID);
-    }
+    }*/
     public  User loginUser(String email,String password){
         return  dao.loginUser(email,password);
     }
