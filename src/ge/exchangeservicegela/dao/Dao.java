@@ -55,7 +55,7 @@ public class Dao {
 
         try (Connection con = DBConnectionProvider.getConnection()) {
             try (PreparedStatement st = con.prepareStatement("UPDATE Users SET " +
-                    " email=?, phoneNumber=?,firstName=?,lastName=?,isSatisfied=?,locationID=?,confirmed=? " +
+                    " phoneNumber=?,firstName=?,lastName=?,isSatisfied=?,locationID=?,confirmed=? " +
                     " WHERE email=? AND password=? ")) {
 
                 st.setString(1,user.getPhoneNumber());
