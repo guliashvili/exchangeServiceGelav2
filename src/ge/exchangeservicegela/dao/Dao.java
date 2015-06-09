@@ -125,21 +125,20 @@ public class Dao {
     }
 
     public ArrayList<User> getMewyvile(int userID){
-        User ret;
+        ArrayList<User> ret = new ArrayList<>();
         try (Connection con = DBConnectionProvider.getConnection()) {
             try (PreparedStatement st = con.prepareStatement("" +
-                    " SELECT u.firstName,u.lastName,u.email,u.phoneNumber FROM " +
+                    " SELECT u.userID FROM " +
                     " Pairs, " +
                     " Users AS u " +
                     " WHERE u.isSatisfied=FALSE AND u. Pairs.userID=? AND Pairs.locationID=u.locationID " +
                     " ORDER BY u.userID ")) {
                 st.setInt(1, userID);
                 ResultSet res = st.executeQuery();
-                if (!res.next()) {
-                    return null;
+                while(res.next()){
+                    int id = res.getInt(1);
+                    ret.add(getUserByID(id));
                 }
-                int id = res.getInt(1);
-                ret = getUserByID(id);
             }
         } catch (SQLException e) {
             ret = null;
