@@ -52,6 +52,8 @@ public class Dao {
 
     public  boolean updateUser(User user){
         boolean errorCode = false;
+        if(!getUserByID(user.getUserID()).getPassword().equals(user.getPassword()))
+            return  true;
 
         try (Connection con = DBConnectionProvider.getConnection()) {
             try (PreparedStatement st = con.prepareStatement("UPDATE Users SET " +
@@ -145,18 +147,19 @@ public class Dao {
                 }
                 ret = new User(res.getInt(1), res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(7),res.getBoolean(8),res.getInt(9),res.getBoolean(10));
                 ret.setPassword("");
+
             }
         } catch (SQLException e) {
             ret = null;
         }
-
         return ret;
     }
 
     public ArrayList<User> getMewyvile(int userID){
 
         ArrayList<User> ret = new ArrayList<>();
-        if(!getUserByID(userID).isConfirmed()) return  ret;
+        if(getUserByID(userID) == null) return  null;
+        else  if(!getUserByID(userID).isConfirmed()) return  ret;
 
         try (Connection con = DBConnectionProvider.getConnection()) {
             try (PreparedStatement st = con.prepareStatement("" +

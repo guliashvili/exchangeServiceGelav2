@@ -18,12 +18,15 @@ public class AllManager {
     }
 
     public  boolean addUser(User user){
+        if(user == null) return  true;
         if(!Check.isValidEmail(user.getEmail())) return  true;
         return  dao.addUser(user);
     }
 
     public  boolean updateUser(User user){
+        if(user == null) return  true;
         return  dao.updateUser(user);
+
     }
 
     /*public boolean removeUser(String email,String password){
@@ -33,6 +36,7 @@ public class AllManager {
         return  dao.setVerified(userID);
     }*/
     public  User loginUser(String email,String password){
+        if(email == null || password == null) return  null;
         return  dao.loginUser(email,password);
     }
     public ArrayList<Location> getLocations(){
