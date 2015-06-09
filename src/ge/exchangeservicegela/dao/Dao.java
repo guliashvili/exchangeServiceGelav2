@@ -145,11 +145,11 @@ public class Dao {
                 }
                 ret = new User(res.getInt(1), res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(7),res.getBoolean(8),res.getInt(9),res.getBoolean(10));
                 ret.setPassword("");
+
             }
         } catch (SQLException e) {
             ret = null;
         }
-
         return ret;
     }
 
