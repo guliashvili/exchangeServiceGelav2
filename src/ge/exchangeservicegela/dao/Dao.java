@@ -55,7 +55,7 @@ public class Dao {
 
         try (Connection con = DBConnectionProvider.getConnection()) {
             try (PreparedStatement st = con.prepareStatement("UPDATE Users SET " +
-                    " email=?, phoneNumber=?,firstName=?,lastName=?,isSatisfied=?,locationID=?,confirmed=? " +
+                    " phoneNumber=?,firstName=?,lastName=?,isSatisfied=?,locationID=?,confirmed=? " +
                     " WHERE email=? AND password=? ")) {
 
                 st.setString(1,user.getPhoneNumber());
@@ -98,7 +98,7 @@ public class Dao {
         try (Connection con = DBConnectionProvider.getConnection()) {
             try (PreparedStatement st = con.prepareStatement("INSERT INTO " +
                     "Users(email,phoneNumber,password,firstName,lastName,isSatisfied,locationID,confirmed) " +
-                    "VALUES(?,?,?,?,?,?,?,?,?)")) {
+                    "VALUES(?,?,?,?,?,?,?,?)")) {
                 st.setString(1,user.getEmail());
                 st.setString(2,user.getPhoneNumber());
                 st.setString(3,user.getPassword());
@@ -109,7 +109,7 @@ public class Dao {
                 st.setBoolean(8,user.isConfirmed());
                 st.executeUpdate();
 
-                user.setUserID(loginUser(user.getEmail(),user.getPassword()).getUserID());
+                user.setUserID(loginUser(user.getEmail(), user.getPassword()).getUserID());
             }
         } catch (SQLException e) {
             errorCode = true;
@@ -144,22 +144,26 @@ public class Dao {
                     return null;
                 }
                 ret = new User(res.getInt(1), res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(7),res.getBoolean(8),res.getInt(9),res.getBoolean(10));
+                ret.setPassword("");
             }
         } catch (SQLException e) {
             ret = null;
         }
-        ret.setPassword("");
+
         return ret;
     }
 
     public ArrayList<User> getMewyvile(int userID){
+
         ArrayList<User> ret = new ArrayList<>();
+        if(!getUserByID(userID).isConfirmed()) return  ret;
+
         try (Connection con = DBConnectionProvider.getConnection()) {
             try (PreparedStatement st = con.prepareStatement("" +
                     " SELECT u.userID FROM " +
                     " Pairs, " +
                     " Users AS u " +
-                    " WHERE u.isSatisfied=FALSE AND u. Pairs.userID=? AND Pairs.locationID=u.locationID " +
+                    " WHERE u.isSatisfied=FALSE AND u.confirmed=TRUE AND Pairs.userID=? AND Pairs.locationID=u.locationID " +
                     " ORDER BY u.userID ")) {
                 st.setInt(1, userID);
                 ResultSet res = st.executeQuery();
