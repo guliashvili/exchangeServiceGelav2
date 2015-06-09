@@ -37,4 +37,8 @@ public class AllManager {
     public User getMewyvile(int userID){
         return  dao.getMewyvile(userID);
     }
+
+    public  boolean addSadUnda(int userId,int placeID){
+        return  dao.addSadUnda(userId,placeID);
+    }
 }
