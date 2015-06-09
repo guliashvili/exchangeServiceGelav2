@@ -145,7 +145,22 @@ public class Dao {
 
     }
 
-
+    public  boolean addSadUnda(int userID,int placeID){
+        boolean errorCode = false;
+        try (Connection con = DBConnectionProvider.getConnection()) {
+            try (PreparedStatement st = con.prepareStatement("insert into Pairs(userID,locationID) VALUES (?,?)")) {
+                st.setInt(1, userID);
+                st.setInt(2,placeID);
+                ResultSet res = st.executeQuery();
+                if (!res.next()) {
+                    errorCode = false;
+                }
+            }
+        } catch (SQLException e) {
+            errorCode = true;
+        }
+        return  errorCode;
+    }
 
 
 
