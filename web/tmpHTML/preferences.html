@@ -31,6 +31,7 @@
 	</style>
 	<body>
 		<div id="authHolder">
+			<a href="user.jsp"><button style="float:right" class="btn btn-lg btn-success">ცვლილებების შეტანა</button></a><br><br><br>
 			<table id="dataTable" class="display" cellspacing="0" width="100%">
 				<thead>
 					<tr>
@@ -56,36 +57,5 @@
 			</table>
 		</div>
 	</body>
-	<script>
-	var locations={};
-	$(document).ready(function() {
-		$.get("localhost:8080/locations").done(function(data){
-			locations=JSON.parse(data);
-		});
-		$.get("localhost:8080/pref").done(function (data){
-			output='<thead>\
-					<tr>\
-						<th>სახელი</th>\
-						<th>გვარი</th>\
-						<th>ტელეფონის ნომერი</th>\
-						<th>ნაკადი</th>\
-						<th>ლოკაცია</th>\
-					</tr>\
-				</thead>\
-				<tbody>';
-			var k = JSON.parse(data);
-			for each(var l in k){
-				output+='<tr>';
-				output+='<td>'+l.firstName;
-				output+='<td>'+l.lastName;
-				output+='<td>'+l.email;
-				output+='<td>'+l.phoneNumber;
-				output+='<td>'+locations[l.locationID].startDate;
-				output+='<td>'+locations[l.locationID].locationName;
-				output+='</tr>';
-			}
-			output+='<tbody>';
-		});
-	});
-	</script>
+	
 </html>

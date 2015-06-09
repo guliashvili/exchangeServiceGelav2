@@ -13,9 +13,10 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <%
-  if(((User)session.getAttribute("user")).isConfirmed()) {
-    String redirectURL = "localhost:8080/preferences.jsp";
-    response.sendRedirect(redirectURL);
+  User user = (User) session.getAttribute("user");
+  if(user!=null){
+      String redirectURL = "preferences.jsp";
+      response.sendRedirect(redirectURL);
   }
 %>
 <head>
