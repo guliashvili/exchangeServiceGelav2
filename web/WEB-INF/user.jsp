@@ -43,7 +43,7 @@
 <body>
 <div id="authHolder">
   <div class="form-group">
-    <form role="form">
+    <form role="form" action="/updateUser">
       <h1 style="margin-left:20px">გთხოვთ შეიყვანოთ ინფორმაცია</h1><br><br><br>
       <div class="form-group">
         <label for="locationHave">აირჩიეთ რომელი ლოკაცია გაქვთ</label>
