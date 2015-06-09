@@ -10,6 +10,13 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+  User user = (User) session.getAttribute("user");
+  if(user!=null){
+    String redirectURL = "preferences.jsp";
+    response.sendRedirect(redirectURL);
+  }
+%>
 <html>
 <script src="http://code.jquery.com/jquery-2.1.4.min.js"> </script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
