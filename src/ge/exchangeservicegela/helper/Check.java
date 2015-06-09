@@ -7,7 +7,7 @@ import javax.mail.internet.InternetAddress;
  * Created by GIO on 6/10/2015.
  */
 public class Check {
-    public boolean isValidEmail(String email) {
+    public static boolean isValidEmail(String email) {
         if (email == null) return false;
 
         boolean result = true;

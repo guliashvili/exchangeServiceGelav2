@@ -3,6 +3,7 @@ package ge.exchangeservicegela.model;
 import ge.exchangeservicegela.beans.Location;
 import ge.exchangeservicegela.beans.User;
 import ge.exchangeservicegela.dao.Dao;
+import ge.exchangeservicegela.helper.Check;
 
 import java.util.ArrayList;
 
@@ -17,7 +18,7 @@ public class AllManager {
     }
 
     public  boolean addUser(User user){
-
+        if(!Check.isValidEmail(user.getEmail())) return  true;
         return  dao.addUser(user);
     }
 
