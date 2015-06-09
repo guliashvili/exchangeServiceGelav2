@@ -45,7 +45,7 @@
 <body>
 <div id="authHolder">
   <div class="form-group">
-    <form role="form">
+    <form role="form" action="/RegisterServlet">
       <h1 style="margin-left:30px">გთხოვთ შეიყვანოთ ინფორმაცია</h1><br><br><br>
       <label for="email">ელექტრონული ფოსტის მისამართი</label>
       <input type="email" class="form-control" id="email" placeholder="ელექტრონული ფოსტის მისამართი" required></input>
