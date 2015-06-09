@@ -65,6 +65,9 @@ public class Dao {
 
     public boolean addUser(User user){
         boolean errorCode = false;
+        user.setIsSatisfied(false);
+        user.setIsConfirmed(false);
+
         try (Connection con = DBConnectionProvider.getConnection()) {
             try (PreparedStatement st = con.prepareStatement("INSERT INTO " +
                     "Users(userID,email,phoneNumber,password,firstName,lastName,isSatisfied,locationID,confirmed) " +
