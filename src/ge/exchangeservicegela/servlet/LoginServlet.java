@@ -21,9 +21,11 @@ public class LoginServlet extends HttpServlet {
 
         AllManager manager = (AllManager) getServletContext().getAttribute(AllManager.class.getName());
 
-        User user = manager.loginUser(email, password);
-        if (user != null) {
-            request.getSession().setAttribute("user", user);
+        if (email != null && password != null) {
+            User user = manager.loginUser(email, password);
+            if (user != null) {
+                request.getSession().setAttribute("user", user);
+            }
         }
 
         getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
