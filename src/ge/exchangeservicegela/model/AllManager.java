@@ -9,9 +9,10 @@ import java.util.ArrayList;
 /**
  * Created by GIO on 6/10/2015.
  */
-public class azo {
+public class AllManager {
     private  Dao dao;
-    public azo(Dao dao){
+
+    public AllManager(Dao dao) {
         this.dao = dao;
     }
 
