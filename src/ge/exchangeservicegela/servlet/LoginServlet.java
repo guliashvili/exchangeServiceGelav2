@@ -24,9 +24,9 @@ public class LoginServlet extends HttpServlet {
         User user = manager.loginUser(email, password);
         if (user != null) {
             request.getSession().setAttribute("user", user);
-
-            getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
         }
+
+        getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
