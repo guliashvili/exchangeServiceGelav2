@@ -43,7 +43,7 @@ public class Dao {
                 st.executeUpdate();
             }
         } catch (SQLException e) {
-            errorCode = false;
+            errorCode = true;
         }
         return errorCode;
     }
@@ -56,7 +56,7 @@ public class Dao {
                 st.executeUpdate();
             }
         } catch (SQLException e) {
-            errorCode = false;
+            errorCode = true;
         }
         return errorCode;
     }
@@ -81,7 +81,7 @@ public class Dao {
                 st.executeUpdate();
             }
         } catch (SQLException e) {
-            errorCode = false;
+            errorCode = true;
         }
         return errorCode;
 
