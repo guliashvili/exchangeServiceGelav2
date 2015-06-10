@@ -24,7 +24,7 @@ public class RegisterServlet extends HttpServlet {
         user.setPhoneNumber(request.getParameter("phoneNumber"));
         user.setPassword(request.getParameter("password"));
         user.setLocationID(Integer.parseInt(request.getParameter("locationHave")));
-
+        System.out.println("registering2");
         AllManager manager = (AllManager) getServletContext().getAttribute(AllManager.class.getName());
 
         if (!manager.addUser(user)) {
