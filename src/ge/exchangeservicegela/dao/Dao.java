@@ -144,7 +144,7 @@ public class Dao {
                 if (!res.next()) {
                     return null;
                 }
-                ret = new User(res.getInt(1), res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(7),res.getBoolean(8),res.getInt(9),res.getBoolean(10));
+                ret = new User(res.getInt(1), res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(6),res.getBoolean(7),res.getInt(8),res.getBoolean(9));
                 ret.setPassword("");
 
             }
