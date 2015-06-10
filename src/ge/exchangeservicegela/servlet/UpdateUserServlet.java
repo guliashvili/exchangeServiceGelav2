@@ -1,6 +1,7 @@
 package ge.exchangeservicegela.servlet;
 
 import ge.exchangeservicegela.beans.User;
+import ge.exchangeservicegela.dao.Dao;
 import ge.exchangeservicegela.model.AllManager;
 
 import javax.servlet.ServletException;
@@ -19,7 +20,7 @@ public class UpdateUserServlet extends HttpServlet {
         String locationHave = request.getParameter("locationHave");
 
         String[] locationWant = request.getParameterValues("locationWant");
-
+        String toLink;
         if (locationHave != null && locationWant != null) {
             User user = (User) request.getSession().getAttribute("user");
 
@@ -34,10 +35,18 @@ public class UpdateUserServlet extends HttpServlet {
             for (String s : locationWant) {
                 manager.addSadUnda(user.getUserID(), Integer.parseInt(s));
             }
+            toLink = "/preferences.jsp";
+        } else
+            toLink = "/index.jsp";
 
-            getServletContext().getRequestDispatcher("/preferences.jsp").forward(request, response);
+        Dao dao = new Dao();
+        try {
+            User user = (User) request.getSession().getAttribute("user");
+            request.getSession().setAttribute("user", dao.loginUser(user.getEmail(), user.getPassword()));
+        } catch (Exception e) {
         }
-        getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+
+        getServletContext().getRequestDispatcher(toLink).forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

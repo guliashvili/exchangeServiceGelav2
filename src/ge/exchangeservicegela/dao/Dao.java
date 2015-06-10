@@ -1,6 +1,5 @@
 package ge.exchangeservicegela.dao;
 
-import com.mysql.fabric.xmlrpc.base.Array;
 import ge.exchangeservicegela.beans.Location;
 import ge.exchangeservicegela.beans.User;
 import ge.exchangeservicegela.db.DBConnectionProvider;
@@ -54,6 +53,9 @@ public class Dao {
         boolean errorCode = false;
         if(!getUserByID(user.getUserID()).getPassword().equals(user.getPassword()))
             return  true;
+
+        User userN = getUserByID(user.getUserID());
+        if (userN.isConfirmed() && !user.isConfirmed()) user.setIsConfirmed(true);
 
         try (Connection con = DBConnectionProvider.getConnection()) {
             try (PreparedStatement st = con.prepareStatement("UPDATE Users SET " +

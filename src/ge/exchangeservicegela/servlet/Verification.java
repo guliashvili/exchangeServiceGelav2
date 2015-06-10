@@ -2,7 +2,6 @@ package ge.exchangeservicegela.servlet;
 
 import ge.exchangeservicegela.beans.User;
 import ge.exchangeservicegela.dao.Dao;
-import ge.exchangeservicegela.model.AllManager;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,6 +25,8 @@ public class Verification extends HttpServlet {
         User u = dao.getUserByID(id);
         u.setIsConfirmed(true);
         dao.updateUser(u);
+
+        request.getSession().setAttribute("user", u);
         getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 
     }

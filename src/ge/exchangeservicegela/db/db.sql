@@ -39,3 +39,38 @@ CREATE TABLE Pairs(
 	FOREIGN KEY (locationID) REFERENCES Location(locationID)
 );
 
+
+INSERT INTO Location (startDate, endDate, locationName) VALUES
+	('17 JUL', '27 JUL', 'anaseuli I'),
+	('17 JUL', '27 JUL', 'cageri I'),
+	('17 JUL', '27 JUL', 'borjomi I'),
+	('17 JUL', '27 JUL', 'rkoni I'),
+	('17 JUL', '27 JUL', 'mtirala I'),
+	('17 JUL', '27 JUL', 'okace I'),
+	('17 JUL', '27 JUL', 'tusheti I'),
+	('17 JUL', '27 JUL', 'lagodexi I'),
+
+	('27 JUL', '6 AUG', 'arxoti II'),
+	('27 JUL', '6 AUG', 'anaseuli II'),
+	('27 JUL', '6 AUG', 'cageri II'),
+	('27 JUL', '6 AUG', 'borjomi II'),
+	('27 JUL', '6 AUG', 'rkoni II'),
+	('27 JUL', '6 AUG', 'mtirala II'),
+	('27 JUL', '6 AUG', 'okace II'),
+	('27 JUL', '6 AUG', 'tusheti II'),
+	('27 JUL', '6 AUG', 'lagodexi II'),
+
+	('6 AUG', '16 AUG', 'arxoti III'),
+	('6 AUG', '16 AUG', 'anaseuli III'),
+	('6 AUG', '16 AUG', 'cageri III'),
+	('6 AUG', '16 AUG', 'borjomi III'),
+	('6 AUG', '16 AUG', 'rkoni III'),
+	('6 AUG', '16 AUG', 'mtirala III'),
+	('6 AUG', '16 AUG', 'okace III'),
+	('6 AUG', '16 AUG', 'tusheti III'),
+	('6 AUG', '16 AUG', 'lagodexi III');
+
+
+
+
+
