@@ -1,7 +1,7 @@
-<%@ page import="ge.exchangeservicegela.dao.Dao" %>
-<%@ page import="ge.exchangeservicegela.beans.User" %>
-<%@ page import="java.util.ArrayList" %>
 <%@ page import="ge.exchangeservicegela.beans.Location" %>
+<%@ page import="ge.exchangeservicegela.beans.User" %>
+<%@ page import="ge.exchangeservicegela.dao.Dao" %>
+<%@ page import="java.util.ArrayList" %>
 <%--
   Created by IntelliJ IDEA.
   User: Ratmach
@@ -51,6 +51,8 @@
 <body>
 <div id="authHolder">
   <a href="user.jsp"><button style="float:right" class="btn btn-lg btn-success">ცვლილებების შეტანა</button></a><br><br><br>
+  <% User us = (User) session.getAttribute("user");
+    out.println(us.getFirstName() + " " + us.getLastName()); %>
   <table id="dataTable" class="display" cellspacing="0" width="100%">
     <thead>
     <tr>
