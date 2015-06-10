@@ -69,13 +69,8 @@
         %>
       <select class="form-control" id="locationHave">
         <%
-          User usr = (User) session.getAttribute("user");
           for(Location loc:locations){
-            if(usr.getLocationID()!=loc.getLocationID()){
-              out.println("<option value="+loc.getLocationID()+">"+loc.getStartDate()+" " + loc.getLocationName()+"</option>");
-            }else{
-              out.println("<option selected value="+loc.getLocationID()+">"+loc.getStartDate()+" " + loc.getLocationName()+"</option>");
-            }
+            out.println("<option value=" + loc.getLocationID() + ">" + loc.getStartDate() + " " + loc.getLocationName() + "</option>");
           }
         %>
       </select>
