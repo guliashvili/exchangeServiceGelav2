@@ -20,6 +20,7 @@ public class AllManager {
     public  boolean addUser(User user){
         if(user == null) return  true;
         if(!Check.isValidEmail(user.getEmail())) return  true;
+        if (!Check.isValidPhoneNumber(user.getPhoneNumber())) return true;
         return  dao.addUser(user);
     }
 

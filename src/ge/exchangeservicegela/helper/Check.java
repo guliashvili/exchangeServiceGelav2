@@ -24,4 +24,13 @@ public class Check {
 
         return result;
     }
+
+    public static boolean isValidPhoneNumber(String phoneNumber) {
+        if (phoneNumber == null) return false;
+
+        phoneNumber = phoneNumber.replaceAll("[^0-9]", "");
+        if (phoneNumber.length() != 9) return false;
+        return phoneNumber.charAt(0) == '5';
+    }
+
 }
