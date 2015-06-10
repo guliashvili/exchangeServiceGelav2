@@ -1,6 +1,7 @@
 package ge.exchangeservicegela.servlet;
 
 import ge.exchangeservicegela.beans.User;
+import ge.exchangeservicegela.helper.EmailSender;
 import ge.exchangeservicegela.model.AllManager;
 
 import javax.servlet.ServletException;
@@ -29,10 +30,11 @@ public class RegisterServlet extends HttpServlet {
 
         if (!manager.addUser(user)) {
             request.getSession().setAttribute("user",user);
+            EmailSender.verifyEmail(user,"");
             getServletContext().getRequestDispatcher("/preferences.jsp").forward(request, response);
 
         } else {
-            getServletContext().getRequestDispatcher("/registration.jsp").include(request, response);
+            getServletContext().getRequestDispatcher("/registration.jsp").forward(request, response);
         }
 
     }

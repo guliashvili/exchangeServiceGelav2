@@ -135,7 +135,7 @@ public class Dao {
         return ret;
     }
 
-    private User getUserByID(int userID){
+    public User getUserByID(int userID){
         User ret;
         try (Connection con = DBConnectionProvider.getConnection()) {
             try (PreparedStatement st = con.prepareStatement("select * FROM Users WHERE  Users.userID=?")) {
@@ -145,8 +145,6 @@ public class Dao {
                     return null;
                 }
                 ret = new User(res.getInt(1), res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(6),res.getBoolean(7),res.getInt(8),res.getBoolean(9));
-                ret.setPassword("");
-
             }
         } catch (SQLException e) {
             ret = null;
@@ -171,7 +169,10 @@ public class Dao {
                 ResultSet res = st.executeQuery();
                 while(res.next()){
                     int id = res.getInt(1);
+                    User u = getUserByID(id);
+                    u.setPassword("");
                     ret.add(getUserByID(id));
+
                 }
             }
         } catch (SQLException e) {
