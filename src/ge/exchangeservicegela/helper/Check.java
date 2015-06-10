@@ -11,13 +11,13 @@ public class Check {
         if (email == null) return false;
 
         boolean result = true;
-        try {
+/*        try {
             InternetAddress emailAddress = new InternetAddress(email);
             emailAddress.validate();
         } catch (AddressException ex) {
             result = false;
         }
-
+*/
         if(email.length() < "@freeuni.edu.ge".length()) result = false;
         else if(!email.substring(email.length() - "@freeuni.edu.ge".length()).equals("@freeuni.edu.ge") )
             result = false;

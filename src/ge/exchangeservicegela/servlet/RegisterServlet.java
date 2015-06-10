@@ -28,10 +28,13 @@ public class RegisterServlet extends HttpServlet {
         AllManager manager = (AllManager) getServletContext().getAttribute(AllManager.class.getName());
 
         if (!manager.addUser(user)) {
+            request.getSession().setAttribute("user",user);
             getServletContext().getRequestDispatcher("/preferences.jsp").forward(request, response);
+
         } else {
             getServletContext().getRequestDispatcher("/registration.jsp").include(request, response);
         }
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
