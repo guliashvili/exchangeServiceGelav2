@@ -61,7 +61,6 @@
       <input type="text" class="form-control" id="lastName" name="lastName" placeholder="თქვენი გვარი" required></input>
       <label for="phoneNumber">თქვენი ტელეფონის ნომერი:</label>
       <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="თქვენი ტელეფონის ნომერი" required> </input><br><br><br>
-      <button type="submit" class="btn btn-success btn-lg">რეგისტრაცია</button>
       <label for="locationHave">აირჩიეთ რომელი ლოკაცია გაქვთ</label>
         <%
           Dao dao = new Dao();
@@ -74,7 +73,8 @@
           }
         %>
       </select>
-
+    <br><br><br>
+      <button type="submit" class="btn btn-success btn-lg">რეგისტრაცია</button>
   </form>
   </div>
   </div>

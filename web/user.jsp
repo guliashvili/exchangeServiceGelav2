@@ -12,8 +12,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
   User user = (User) session.getAttribute("user");
-  if(user!=null){
-    String redirectURL = "preferences.jsp";
+  if(user==null){
+    String redirectURL = "index.jsp";
     response.sendRedirect(redirectURL);
   }
 %>
