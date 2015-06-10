@@ -162,11 +162,10 @@ public class Dao {
 
         try (Connection con = DBConnectionProvider.getConnection()) {
             try (PreparedStatement st = con.prepareStatement("" +
-                    " SELECT u.userID FROM " +
-                    " Pairs, " +
-                    " Users AS u " +
-                    " WHERE u.isSatisfied=FALSE AND u.confirmed=TRUE AND Pairs.userID=? AND Pairs.locationID=u.locationID " +
-                    " ORDER BY u.userID ")) {
+                    " SELECT u1.userID FROM Pairs p1,Pairs p2,Users AS u1,Users AS u2 " +
+                    " WHERE u1.isSatisfied=FALSE AND u1.confirmed=TRUE AND p1.userID = u1.userID " +
+                    " AND p2.userID=? AND p2.userID = u2.userID  AND p1.userID != p2.userID " +
+                    " AND p2.locationID=u1.locationID AND p1.locationID=u2.locationID ORDER BY u1.userID ")) {
                 st.setInt(1, userID);
                 ResultSet res = st.executeQuery();
                 while(res.next()){

@@ -1,7 +1,7 @@
-<%@ page import="ge.exchangeservicegela.dao.Dao" %>
 <%@ page import="ge.exchangeservicegela.beans.Location" %>
-<%@ page import="java.util.ArrayList" %>
 <%@ page import="ge.exchangeservicegela.beans.User" %>
+<%@ page import="ge.exchangeservicegela.dao.Dao" %>
+<%@ page import="java.util.ArrayList" %>
 <%--
   Created by IntelliJ IDEA.
   User: Ratmach
@@ -50,6 +50,11 @@
 </style>
 <body>
 <div id="authHolder">
+    <% User us = (User) session.getAttribute("user");
+    out.println(us.getFirstName() + " " + us.getLastName());
+    if(us.isConfirmed()) out.println("Is  confirmed");
+    else out.println("Is NOT confirmed");
+  %>
   <div class="form-group">
     <form role="form" action="/updateUser" method="POST">
       <h1 style="margin-left:20px">გთხოვთ შეიყვანოთ ინფორმაცია</h1><br><br><br>
