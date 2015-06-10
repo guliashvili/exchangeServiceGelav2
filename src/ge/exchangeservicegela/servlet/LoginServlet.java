@@ -25,6 +25,8 @@ public class LoginServlet extends HttpServlet {
             User user = manager.loginUser(email, password);
             if (user != null) {
                 request.getSession().setAttribute("user", user);
+                getServletContext().getRequestDispatcher("/preferences.jsp").forward(request, response);
+                return;
             }
         }
 
