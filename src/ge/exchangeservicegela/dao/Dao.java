@@ -155,7 +155,7 @@ public class Dao {
     }
 
     public ArrayList<User> getMewyvile(int userID){
-
+        System.out.print(userID);
         ArrayList<User> ret = new ArrayList<>();
         if(getUserByID(userID) == null) return  null;
         else  if(!getUserByID(userID).isConfirmed()) return  ret;
@@ -182,6 +182,7 @@ public class Dao {
     }
 
     public  boolean addSadUnda(int userID,int placeID){
+        System.out.println(userID +" " + placeID);
         boolean errorCode = false;
         try (Connection con = DBConnectionProvider.getConnection()) {
             try (PreparedStatement st = con.prepareStatement("insert into Pairs(userID,locationID) VALUES (?,?)")) {

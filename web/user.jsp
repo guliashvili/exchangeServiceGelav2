@@ -59,7 +59,7 @@
           Dao dao = new Dao();
           ArrayList<Location> locations = dao.getLocations();
         %>
-        <select class="form-control" id="locationHave">
+        <select class="form-control" id="locationHave" name="locationHave">
           <%
             User usr = (User) session.getAttribute("user");
             for(Location loc:locations){
@@ -74,7 +74,7 @@
       </div>
       <div class="form-group">
         <label for="locationWant">აირჩიე რომელი ლოკაცია გინდა:</label>
-        <select multiple class="form-control" id="locationWant">
+        <select multiple class="form-control" id="locationWant" name="locationWant">
           <%
             for(Location loc:locations){
               out.println("<option value="+loc.getLocationID()+">"+loc.getStartDate()+" " + loc.getLocationName()+"</option>");

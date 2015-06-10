@@ -18,23 +18,26 @@ public class UpdateUserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String locationHave = request.getParameter("locationHave");
 
-        String[] locationWant = request.getParameterMap().get("locationWant");
+        String[] locationWant = request.getParameterValues("locationWant");
 
         if (locationHave != null && locationWant != null) {
             User user = (User) request.getSession().getAttribute("user");
 
             user.setLocationID(Integer.parseInt(locationHave));
 
+
             AllManager manager = (AllManager) getServletContext().getAttribute(AllManager.class.getName());
+            manager.updateUser(user);
 
             manager.clearSadUnda(user.getUserID());
 
             for (String s : locationWant) {
-                manager.addSadUnda(Integer.parseInt(locationHave), Integer.parseInt(s));
+                manager.addSadUnda(user.getUserID(), Integer.parseInt(s));
             }
 
             getServletContext().getRequestDispatcher("/preferences.jsp").forward(request, response);
         }
+        getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -49,5 +52,6 @@ public class UpdateUserServlet extends HttpServlet {
 
             getServletContext().getRequestDispatcher("/preferences.jsp").forward(request, response);
         }
+        getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
     }
 }
