@@ -50,8 +50,8 @@ public class UpdateUserServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (request.getParameter("satisfy") != null) {
-            User user = (User) request.getSession().getAttribute("user");
+
+        User user = (User) request.getSession().getAttribute("user");
 
             user.setIsSatisfied(true);
 
@@ -61,6 +61,4 @@ public class UpdateUserServlet extends HttpServlet {
 
             getServletContext().getRequestDispatcher("/preferences.jsp").forward(request, response);
         }
-        getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
-    }
 }
