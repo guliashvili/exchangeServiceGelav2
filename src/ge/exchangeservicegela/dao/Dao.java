@@ -65,8 +65,6 @@ public class Dao {
 
     public  boolean updateUser(User user){
         boolean errorCode = false;
-        if(!getUserByID(user.getUserID()).getPassword().equals(user.getPassword()))
-            return  true;
 
         User userN = getUserByID(user.getUserID());
         if (userN.isConfirmed() && !user.isConfirmed()) user.setIsConfirmed(true);

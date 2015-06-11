@@ -89,7 +89,7 @@
       </div>
       <button type="submit" style="margin-left:200px;" class="btn btn-success btn-lg">შეინახე</button>
     </form>
-    <form action="/updateUser" method="POST">
+    <form action="/updateUser" method="GET">
       <button type="submit" style="margin-left:200px;" class="btn btn-danger btn-lg">აღარ მინდა გაცვლა</button>
     </form>
   </div>
