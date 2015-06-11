@@ -20,6 +20,7 @@ public class Verification extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("verified user");
         int id = Integer.parseInt(request.getParameter("userID"));
         Dao dao = new Dao();
         User u = dao.getUserByID(id);

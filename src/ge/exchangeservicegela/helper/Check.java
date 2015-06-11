@@ -19,7 +19,8 @@ public class Check {
         }
 
         if(email.length() < "@freeuni.edu.ge".length()) result = false;
-        else if(!email.substring(email.length() - "@freeuni.edu.ge".length()).equals("@freeuni.edu.ge") )
+        else if (!email.substring(email.length() - "@freeuni.edu.ge".length()).equals("@freeuni.edu.ge") &&
+                !email.substring(email.length() - "@agruni.edu.ge".length()).equals("@agruni.edu.ge"))
             result = false;
 
         return result;

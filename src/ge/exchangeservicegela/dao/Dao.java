@@ -14,7 +14,21 @@ import java.util.ArrayList;
  * Created by Alex on 6/9/2015.
  */
 public class Dao {
+    public boolean hasSelected(int userId, int locId) {
+        try (Connection con = DBConnectionProvider.getConnection()) {
+            try (PreparedStatement st = con.prepareStatement("SELECT * FROM Pairs WHERE  userID=? AND locationID=?")) {
+                st.setInt(1, userId);
+                st.setInt(2, locId);
+                ResultSet res = st.executeQuery();
+                if (!res.next()) {
+                    return false;
+                }
 
+            }
+        } catch (SQLException e) {
+        }
+        return true;
+    }
     public  User loginUser(String email,String password) {
         User ret;
         try (Connection con = DBConnectionProvider.getConnection()) {
@@ -155,16 +169,33 @@ public class Dao {
     }
 
     public ArrayList<User> getMewyvile(int userID){
-        System.out.print(userID);
+        //System.out.print(userID);
         ArrayList<User> ret = new ArrayList<>();
         if(getUserByID(userID) == null) return  null;
 
+        String selectAgrUni = "" +
+                " SELECT u1.userID FROM Pairs p1,Pairs p2,Users AS u1,Users AS u2 " +
+                " WHERE u1.isSatisfied=FALSE AND p1.userID = u1.userID " +
+                " AND p2.userID=? AND p2.userID = u2.userID  AND p1.userID != p2.userID " +
+                " AND p2.locationID=u1.locationID AND p1.locationID=u2.locationID " +
+                " AND u1.email LIKE '%@agruni.edu.ge'" +
+                " ORDER BY u1.userID ";
+        String selectFreeUni = "" +
+                " SELECT u1.userID FROM Pairs p1,Pairs p2,Users AS u1,Users AS u2 " +
+                " WHERE u1.isSatisfied=FALSE AND p1.userID = u1.userID " +
+                " AND p2.userID=? AND p2.userID = u2.userID  AND p1.userID != p2.userID " +
+                " AND p2.locationID=u1.locationID AND p1.locationID=u2.locationID " +
+                " AND u1.email LIKE '%@freeuni.edu.ge'" +
+                " ORDER BY u1.userID ";
+
+        String cur;
+        String email = getUserByID(userID).getEmail();
+        if (email.substring(email.length() - "@agruni.edu.ge".length()).equals("@agruni.edu.ge"))
+            cur = selectAgrUni;
+        else
+            cur = selectFreeUni;
         try (Connection con = DBConnectionProvider.getConnection()) {
-            try (PreparedStatement st = con.prepareStatement("" +
-                    " SELECT u1.userID FROM Pairs p1,Pairs p2,Users AS u1,Users AS u2 " +
-                    " WHERE u1.isSatisfied=FALSE AND p1.userID = u1.userID " +
-                    " AND p2.userID=? AND p2.userID = u2.userID  AND p1.userID != p2.userID " +
-                    " AND p2.locationID=u1.locationID AND p1.locationID=u2.locationID ORDER BY u1.userID ")) {
+            try (PreparedStatement st = con.prepareStatement(cur)) {
                 st.setInt(1, userID);
                 ResultSet res = st.executeQuery();
                 while(res.next()){
@@ -183,7 +214,7 @@ public class Dao {
     }
 
     public  boolean addSadUnda(int userID,int placeID){
-        System.out.println(userID +" " + placeID);
+        //System.out.println(userID +" " + placeID);
         boolean errorCode = false;
         try (Connection con = DBConnectionProvider.getConnection()) {
             try (PreparedStatement st = con.prepareStatement("insert into Pairs(userID,locationID) VALUES (?,?)")) {

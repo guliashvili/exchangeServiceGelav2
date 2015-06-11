@@ -18,7 +18,7 @@ import java.io.IOException;
 public class UpdateUserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String locationHave = request.getParameter("locationHave");
-
+        System.out.println("Updated");
         String[] locationWant = request.getParameterValues("locationWant");
         String toLink;
         if (locationHave != null && locationWant != null) {
@@ -50,7 +50,7 @@ public class UpdateUserServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        System.out.println("SATISFIED");
         User user = (User) request.getSession().getAttribute("user");
 
             user.setIsSatisfied(true);
