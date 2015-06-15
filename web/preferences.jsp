@@ -55,6 +55,8 @@
     out.println(us.getFirstName() + " " + us.getLastName());
     if (us.isConfirmed()) out.println("Is  confirmed");
     else out.println("Is NOT confirmed");
+    if (us.isSatisfied()) out.println("ძიებისას სხვები ვეღარ დაგინახავენ");
+    out.println("<br><b>გამაცვლევინეთ ცაგერი 1 ბორჯომ 1ში და მიიღეთ საჩურად 20 ლარი 557105511</b>");
   %>
   <table id="dataTable" class="display" cellspacing="0" width="100%">
     <thead>

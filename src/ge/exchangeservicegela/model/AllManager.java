@@ -30,6 +30,11 @@ public class AllManager {
 
     }
 
+    public boolean updateSat(User user) {
+        if (user == null) return true;
+        return dao.updateSat(user);
+    }
+
     /*public boolean removeUser(String email,String password){
         return  dao.removeUser(email,password);
     }

@@ -16,10 +16,11 @@ import java.io.IOException;
 @WebServlet("/verification")
 public class Verification extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        request.setCharacterEncoding("UTF-8");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         System.out.println("verified user");
         int id = Integer.parseInt(request.getParameter("userID"));
         Dao dao = new Dao();

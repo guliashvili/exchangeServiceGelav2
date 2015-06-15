@@ -1,8 +1,5 @@
 package ge.exchangeservicegela.servlet;
 
-import ge.exchangeservicegela.beans.User;
-import ge.exchangeservicegela.model.AllManager;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,11 +13,12 @@ import java.io.IOException;
 @WebServlet("/redirect")
 public class redirectServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        request.setCharacterEncoding("UTF-8");
         getServletContext().getRequestDispatcher("/user.jsp").forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         getServletContext().getRequestDispatcher("/user.jsp").forward(request, response);
     }
 }

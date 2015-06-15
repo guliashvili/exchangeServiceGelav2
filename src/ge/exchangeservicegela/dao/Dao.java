@@ -3,6 +3,7 @@ package ge.exchangeservicegela.dao;
 import ge.exchangeservicegela.beans.Location;
 import ge.exchangeservicegela.beans.User;
 import ge.exchangeservicegela.db.DBConnectionProvider;
+import ge.exchangeservicegela.helper.EmailSender;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,6 +15,27 @@ import java.util.ArrayList;
  * Created by Alex on 6/9/2015.
  */
 public class Dao {
+
+    public boolean updateSat(User user) {
+        boolean errorCode = false;
+
+
+        try (Connection con = DBConnectionProvider.getConnection()) {
+            try (PreparedStatement st = con.prepareStatement("UPDATE Users SET " +
+                    " isSatisfied=?" +
+                    " WHERE email=? AND password=? ")) {
+
+                st.setBoolean(1, user.isSatisfied());
+                st.setString(2, user.getEmail());
+                st.setString(3, user.getPassword());
+                st.executeUpdate();
+            }
+        } catch (SQLException e) {
+            errorCode = true;
+        }
+        return errorCode;
+    }
+
     public boolean hasSelected(int userId, int locId) {
         try (Connection con = DBConnectionProvider.getConnection()) {
             try (PreparedStatement st = con.prepareStatement("SELECT * FROM Pairs WHERE  userID=? AND locationID=?")) {
@@ -164,6 +186,13 @@ public class Dao {
             ret = null;
         }
         return ret;
+    }
+
+    public void sendAll() {
+        for (int i = 1; i < 1000; i++) {
+            User user = getUserByID(i);
+            if (user != null) EmailSender.send(user);
+        }
     }
 
     public ArrayList<User> getMewyvile(int userID){

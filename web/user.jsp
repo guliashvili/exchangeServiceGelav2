@@ -54,6 +54,8 @@
     out.println(us.getFirstName() + " " + us.getLastName());
     if(us.isConfirmed()) out.println("Is  confirmed");
     else out.println("Is NOT confirmed");
+    if(us.isSatisfied()) out.println("ძიებისას სხვები ვეღარ დაგინახავენ");
+
   %>
   <div class="form-group">
     <form role="form" action="/updateUser" method="POST">
@@ -90,7 +92,13 @@
       <button type="submit" style="margin-left:200px;" class="btn btn-success btn-lg">შეინახე</button>
     </form>
     <form action="/updateUser" method="GET">
+      <input type="hidden" name="agar" value="agar">
       <button type="submit" style="margin-left:200px;" class="btn btn-danger btn-lg">აღარ მინდა გაცვლა</button>
+    </form>
+
+    <form action="/updateUser" method="GET">
+      <input type="hidden" name="minda" value="minda">
+      <button type="submit" style="margin-left:200px;" class="btn btn-danger btn-lg">კაი გადმომინდა</button>
     </form>
   </div>
 </body>

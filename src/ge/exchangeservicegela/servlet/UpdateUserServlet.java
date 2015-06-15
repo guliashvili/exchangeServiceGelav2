@@ -17,6 +17,7 @@ import java.io.IOException;
 @WebServlet("/updateUser")
 public class UpdateUserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         String locationHave = request.getParameter("locationHave");
         System.out.println("Updated");
         String[] locationWant = request.getParameterValues("locationWant");
@@ -50,15 +51,22 @@ public class UpdateUserServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("SATISFIED");
+        request.setCharacterEncoding("UTF-8");
         User user = (User) request.getSession().getAttribute("user");
+        AllManager manager = (AllManager) getServletContext().getAttribute(AllManager.class.getName());
 
+        if (request.getParameter("minda") != null) {
+            user.setIsSatisfied(false);
+            manager.updateSat(user);
+            System.out.println("UN RE SATISFIED");
+        } else if (request.getParameter("agar") != null) {
             user.setIsSatisfied(true);
+            manager.updateSat(user);
+            System.out.println("SATISFIED");
 
-            AllManager manager = (AllManager) getServletContext().getAttribute(AllManager.class.getName());
+        }
 
-            manager.updateUser(user);
 
-            getServletContext().getRequestDispatcher("/preferences.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/preferences.jsp").forward(request, response);
         }
 }
